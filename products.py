@@ -1,12 +1,20 @@
-# reading file
+import os # operating system
+
+#read file
 products = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-	for line in f:
-		if '商品,價格' in line:
-			continue #跳過,繼續下一個
-		name, price = line.strip().split(',')
-		products.append([name,price])
-print(products)
+if os.path.isfile('products.csv'): # check if file is existed
+	print('file is ok ! ')
+	with open('products.csv', 'r', encoding='utf-8') as f:
+		for line in f:
+			if '商品,價格' in line:
+				continue #跳過,繼續下一個
+			name, price = line.strip().split(',')
+			products.append([name,price])
+	print(products)
+	
+else:
+	print('file is not found ! ')
+
 
 # let user type expense notes
 while True:
