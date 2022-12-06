@@ -1,5 +1,19 @@
-# 1st article : expense notes
+
+# reading file
 products = []
+with open('products.csv', 'r', encoding='utf-8') as f:
+	for line in f:
+		if '商品,價格' in line:
+			continue #跳過,繼續下一個
+		#s = line.strip().split(',')
+		#name = s[0]
+		#price = s[1]
+		name, price = line.strip().split(',')
+		products.append([name,price])
+print(products)
+
+# 1st article : expense notes
+##products = [] ; already move above
 while True:
 	name = input('please type item name : ')
 	if name == 'q':
